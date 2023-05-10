@@ -1,0 +1,175 @@
+mysql> show tables;
++--------------------+
+| Tables_in_safecity |
++--------------------+
+| Admin              |
+| CrimeRating        |
+| User               |
+| area               |
+| crime              |
+| login              |
+| news               |
+| rating             |
++--------------------+
+8 rows in set (0.00 sec)
+
+mysql> desc Admin;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| adminName  | varchar(50)  | YES  |     | NULL    |       |
+| adminPass  | varchar(50)  | YES  |     | NULL    |       |
+| adminId    | int(11)      | NO   |     | NULL    |       |
+| adminEmail | varchar(255) | YES  |     | NULL    |       |
+| isMaster   | varchar(255) | YES  |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select * from Admin;
++-----------+-----------+---------+------------+----------+
+| adminName | adminPass | adminId | adminEmail | isMaster |
++-----------+-----------+---------+------------+----------+
+| admin     | admin123  |       0 | NULL       | NULL     |
++-----------+-----------+---------+------------+----------+
+1 row in set (0.00 sec)
+
+mysql> desc CrimeRating;
++--------+--------------+------+-----+---------+----------------+
+| Field  | Type         | Null | Key | Default | Extra          |
++--------+--------------+------+-----+---------+----------------+
+| Id     | int(11)      | NO   | PRI | NULL    | auto_increment |
+| City   | varchar(255) | YES  |     | NULL    |                |
+| Lan    | double       | NO   |     | NULL    |                |
+| Lat    | double       | NO   |     | NULL    |                |
+| rating | int(11)      | NO   |     | NULL    |                |
++--------+--------------+------+-----+---------+----------------+
+5 rows in set (0.05 sec)
+
+mysql> select * from CrimeRating;
++----+-----------+------------+-------------+--------+
+| Id | City      | Lan        | Lat         | rating |
++----+-----------+------------+-------------+--------+
+|  1 | pune      |  73.856255 |   18.516726 |      7 |
+|  2 | mumbai    |     72.877 |      19.076 |      4 |
+|  3 | surat     |    72.8311 |     21.1702 |      7 |
+|  4 | kothrud   |  73.807182 |    18.50989 |      3 |
+|  5 | katraj    |   73.86898 |   18.445089 |      5 |
+|  6 | hinjewadi | 73.4258104 | 18.35467088 |      9 |
++----+-----------+------------+-------------+--------+
+6 rows in set (0.04 sec)
+
+mysql> desc User;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| id           | int(11)     | YES  |     | NULL    |       |
+| firstname    | varchar(50) | YES  |     | NULL    |       |
+| lastname     | varchar(50) | YES  |     | NULL    |       |
+| useremail    | varchar(50) | YES  |     | NULL    |       |
+| userpassword | varchar(50) | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> select * from User;
++------+-----------+----------+----------------+--------------+
+| id   | firstname | lastname | useremail      | userpassword |
++------+-----------+----------+----------------+--------------+
+|    1 | baba      | Bajare   | baba@gmail.com | baba@123     |
++------+-----------+----------+----------------+--------------+
+1 row in set (0.03 sec)
+
+mysql> desc area;
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| area_id   | int(11)     | NO   | PRI | NULL    | auto_increment |
+| area_name | varchar(50) | YES  |     | NULL    |                |
+| city      | varchar(50) | YES  |     | NULL    |                |
+| state     | varchar(50) | YES  |     | NULL    |                |
+| pincode   | int(10)     | YES  |     | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from area;
++---------+-----------------+--------+-------------+---------+
+| area_id | area_name       | city   | state       | pincode |
++---------+-----------------+--------+-------------+---------+
+|     101 | swargate        | city   | maharashtra |  411037 |
+|     102 | shivajinagar    | pune   | maharashtra |  411042 |
+|     103 | gatewayof india | mumbai | maharashtra |  411042 |
++---------+-----------------+--------+-------------+---------+
+3 rows in set (0.00 sec)
+
+mysql> desc crime;
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| crime_id   | int(11)     | NO   | PRI | NULL    | auto_increment |
+| crime_name | varchar(50) | YES  |     | NULL    |                |
+| rating     | int(10)     | YES  |     | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from crime;
++----------+------------+--------+
+| crime_id | crime_name | rating |
++----------+------------+--------+
+|       11 | robbery    |      4 |
++----------+------------+--------+
+1 row in set (0.00 sec)
+
+mysql> desc login;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| name     | varchar(50) | YES  |     | NULL    |       |
+| email    | varchar(50) | NO   | PRI | NULL    |       |
+| password | varchar(50) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select * from login;
++------+----------------+----------+
+| name | email          | password |
++------+----------------+----------+
+| akki | akki@gmail.com | akki123  |
++------+----------------+----------+
+1 row in set (0.00 sec)
+
+mysql> desc news;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| news_id  | int(11)      | NO   | PRI | NULL    |       |
+| area_id  | int(11)      | YES  |     | NULL    |       |
+| crime_id | int(11)      | YES  |     | NULL    |       |
+| date     | date         | YES  |     | NULL    |       |
+| source   | varchar(100) | YES  |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select * from news;
++---------+---------+----------+------------+-----------+
+| news_id | area_id | crime_id | date       | source    |
++---------+---------+----------+------------+-----------+
+|       1 |     101 |       11 | 2019-06-20 | newspaper |
++---------+---------+----------+------------+-----------+
+1 row in set (0.05 sec)
+
+mysql> desc rating;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| rating_id | int(11)      | YES  |     | NULL    |       |
+| news_id   | int(11)      | YES  |     | NULL    |       |
+| source    | varchar(100) | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select * from rating;
++-----------+---------+-----------+
+| rating_id | news_id | source    |
++-----------+---------+-----------+
+|       123 |       1 | newspaper |
++-----------+---------+-----------+
+1 row in set (0.00 sec
